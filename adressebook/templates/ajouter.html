@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+        <div class="content">
+
+            <div class="content-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        NOUVEAU CONTACT
+                    </span>
+
+                    <h1>Ajouter un contact</h1>
+
+                    <p>
+                        Ajoutez une nouvelle personne à votre carnet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <div>
+                        <h2>Informations du contact</h2>
+
+                        <p>
+                            Renseignez les informations ci-dessous.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form method="post" action="{% url  'ajouter' %}">
+                {% csrf_token %}
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>Prénom</label>
+
+                            <input
+                                type="text"
+                                placeholder="Ex : Koffi"
+                                name="prenom"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Nom</label>
+
+                            <input
+                                type="text"
+                                placeholder="Ex : Kouassi"
+                                 name="nom"
+                                
+
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Téléphone</label>
+
+                            <input
+                                type="tel"
+                                placeholder="+225 07 00 00 00 00"
+                                 name="telephone"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Email</label>
+
+                            <input
+                                type="email"
+                                placeholder="exemple@gmail.com"
+                                  name="email"
+                            >
+
+                        </div>
+
+<!-- 
+                        <div class="form-group">
+
+                            <label>Catégorie</label>
+
+                            <select>
+
+                                <option>
+                                    Sélectionner
+                                </option>
+
+                                <option>
+                                    Famille
+                                </option>
+
+                                <option>
+                                    Amis
+                                </option>
+
+                                <option>
+                                    Travail
+                                </option>
+
+                                <option>
+                                    Autre
+                                </option>
+
+                            </select>
+
+                        </div> -->
+
+
+
+
+                        <div class="form-group full">
+
+                            <label>Adresse</label>
+
+                            <input
+                                type="text"
+                                placeholder="Ex : Cocody, Abidjan"
+                                name="adresse"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>Notes</label>
+
+                            <textarea
+                            name="note"
+                                placeholder="Ajoutez une note..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <a
+                            href="{% url 'index' %}"
+                            class="secondary-button"
+                        >
+                            Annuler
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                            Enregistrer le contact
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+{% endblock %}
+</div>
+
+</body>
+</html>

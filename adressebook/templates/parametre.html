@@ -1,0 +1,679 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="content-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        CONFIGURATION
+                    </span>
+
+                    <h1>Paramètres</h1>
+
+                    <p>
+                        Gérez votre compte et personnalisez votre application.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SETTINGS -->
+
+            <div class="settings-layout">
+
+
+                <!-- SETTINGS MENU -->
+
+                <aside class="settings-menu">
+
+                    <a
+                        href="#profil"
+                        class="settings-link active"
+                    >
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <span>Mon profil</span>
+
+                    </a>
+
+
+                    <a
+                        href="#apparence"
+                        class="settings-link"
+                    >
+
+                        <i class="fa-solid fa-palette"></i>
+
+                        <span>Apparence</span>
+
+                    </a>
+
+
+                    <a
+                        href="#notifications"
+                        class="settings-link"
+                    >
+
+                        <i class="fa-solid fa-bell"></i>
+
+                        <span>Notifications</span>
+
+                    </a>
+
+
+                    <a
+                        href="#securite"
+                        class="settings-link"
+                    >
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <span>Sécurité</span>
+
+                    </a>
+
+
+                    <a
+                        href="#preferences"
+                        class="settings-link"
+                    >
+
+                        <i class="fa-solid fa-sliders"></i>
+
+                        <span>Préférences</span>
+
+                    </a>
+
+                </aside>
+
+
+                <!-- SETTINGS CONTENT -->
+
+                <div class="settings-content">
+
+
+                    <!-- PROFIL -->
+                      {% if user.is_authenticated %}
+                    <section
+                        class="settings-card"
+                        id="profil"
+                    >
+
+                        <div class="settings-card-header">
+
+                            <div>
+
+                                <h2>Mon profil</h2>
+
+                                <p>
+                                    Gérez les informations de votre compte.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        
+                        <div class="profile-settings">
+
+                            <div class="large-avatar">
+                                {{ user.email|slice:":1"|upper}}
+                            </div>
+
+
+                            <div>
+
+                                <h3>{{ user.email }}</h3>
+
+                                <p>
+                                    {{ user.username }}
+                                </p>
+
+                                <button class="outline-button">
+
+                                    <i class="fa-solid fa-camera"></i>
+
+                                    Modifier la photo
+
+                                </button>
+
+                            </div>
+
+                        </div>
+                       
+
+
+                        <div class="settings-form">
+
+                            <div class="form-group">
+
+                                <label>Prénom</label>
+
+                                <input
+                                    type="text"
+                                    value="{{ user.prenom }}"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Nom</label>
+
+                                <input
+                                    type="text"
+                                    value="{{ user.username }}"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>Adresse email</label>
+
+                                <input
+                                    type="email"
+                                    value="{{ user.email }}"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>Numéro de téléphone</label>
+
+                                <input
+                                    type="tel"
+                                    value="{{ user.telephone }}"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-footer">
+
+                            <button class="primary-button">
+
+                                <i class="fa-solid fa-check"></i>
+
+                                Enregistrer
+
+                            </button>
+
+                        </div>
+
+                    </section>
+                    {% endif %}
+
+
+                    <!-- APPARENCE -->
+
+                    <section
+                        class="settings-card"
+                        id="apparence"
+                    >
+
+                        <div class="settings-card-header">
+
+                            <div>
+
+                                <h2>Apparence</h2>
+
+                                <p>
+                                    Personnalisez l'apparence de Contactly.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-description">
+
+                                <div class="setting-row-icon purple">
+
+                                    <i class="fa-solid fa-moon"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>Mode sombre</strong>
+
+                                    <p>
+                                        Utiliser le thème sombre de l'application.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input type="checkbox">
+
+                                <span></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-description">
+
+                                <div class="setting-row-icon blue">
+
+                                    <i class="fa-solid fa-palette"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>Couleur principale</strong>
+
+                                    <p>
+                                        Choisissez la couleur de l'interface.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="color-options">
+
+                                <span class="color active"></span>
+
+                                <span class="color blue"></span>
+
+                                <span class="color green"></span>
+
+                                <span class="color orange"></span>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <section
+                        class="settings-card"
+                        id="notifications"
+                    >
+
+                        <div class="settings-card-header">
+
+                            <div>
+
+                                <h2>Notifications</h2>
+
+                                <p>
+                                    Choisissez les notifications que vous souhaitez recevoir.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-description">
+
+                                <div class="setting-row-icon purple">
+
+                                    <i class="fa-solid fa-envelope"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>Notifications par email</strong>
+
+                                    <p>
+                                        Recevoir les informations importantes par email.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-description">
+
+                                <div class="setting-row-icon orange">
+
+                                    <i class="fa-solid fa-cake-candles"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>Anniversaires</strong>
+
+                                    <p>
+                                        Recevoir un rappel avant l'anniversaire d'un contact.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-description">
+
+                                <div class="setting-row-icon blue">
+
+                                    <i class="fa-solid fa-bell"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>Nouveautés</strong>
+
+                                    <p>
+                                        Recevoir les informations concernant l'application.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input type="checkbox">
+
+                                <span></span>
+
+                            </label>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- SECURITE -->
+
+                    <section
+                        class="settings-card"
+                        id="securite"
+                    >
+
+                        <div class="settings-card-header">
+
+                            <div>
+
+                                <h2>Sécurité</h2>
+
+                                <p>
+                                    Gérez la sécurité de votre compte.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-item">
+
+                            <div>
+
+                                <strong>Mot de passe</strong>
+
+                                <p>
+                                    Dernière modification il y a 30 jours.
+                                </p>
+
+                            </div>
+
+
+                            <button class="outline-button">
+
+                                Modifier
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="security-item">
+
+                            <div>
+
+                                <strong>Authentification à deux facteurs</strong>
+
+                                <p>
+                                    Renforcez la sécurité de votre compte.
+                                </p>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input type="checkbox">
+
+                                <span></span>
+
+                            </label>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- PREFERENCES -->
+
+                    <section
+                        class="settings-card"
+                        id="preferences"
+                    >
+
+                        <div class="settings-card-header">
+
+                            <div>
+
+                                <h2>Préférences</h2>
+
+                                <p>
+                                    Configurez les préférences de votre carnet d'adresses.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-form">
+
+                            <div class="form-group">
+
+                                <label>Langue</label>
+
+                                <select>
+
+                                    <option>Français</option>
+
+                                    <option>English</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Format de date</label>
+
+                                <select>
+
+                                    <option>DD/MM/YYYY</option>
+
+                                    <option>MM/DD/YYYY</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>Nombre de contacts par page</label>
+
+                                <select>
+
+                                    <option>10 contacts</option>
+
+                                    <option>25 contacts</option>
+
+                                    <option>50 contacts</option>
+
+                                    <option>100 contacts</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-footer">
+
+                            <button class="primary-button">
+
+                                <i class="fa-solid fa-check"></i>
+
+                                Enregistrer les préférences
+
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ZONE DANGEREUSE -->
+
+                    <section class="settings-card danger-zone">
+
+                        <div class="settings-card-header">
+
+                            <div>
+
+                                <h2>Zone dangereuse</h2>
+
+                                <p>
+                                    Les actions de cette section peuvent être irréversibles.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-item">
+
+                            <div>
+
+                                <strong>Supprimer mon compte</strong>
+
+                                <p>
+                                    Supprimer définitivement votre compte et vos données.
+                                </p>
+
+                            </div>
+
+
+                            <button class="danger-outline">
+
+                                Supprimer le compte
+
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
+
+
+
+{% endblock %}

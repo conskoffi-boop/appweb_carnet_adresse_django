@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contacts — Contactly</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-address-book"></i>
+            </div>
+
+            <span>Contactly</span>
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="{% url 'index' %}" class="nav-link active">
+                <i class="fa-solid fa-users"></i>
+                <span>Mes contacts</span>
+            </a>
+
+            <a href="{% url 'ajouter' %}" class="nav-link">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Ajouter un contact</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-star"></i>
+                <span>Favoris</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="{% url 'parametre' %}" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Paramètres</span>
+            </a>
+
+            <div class="user-mini">
+
+                <div class="user-avatar">
+                    F
+                </div>
+
+                <div>
+                    <p> dev par </p>
+                    <strong>Farel Koffi</strong>
+                    <small> farelkoffi@gmail.com
+                        0170434496
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+<!-- 
+            <div class="topbar-search">
+            <form action="" method="get"></form>
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Rechercher un contact..."
+                    name="recherche"
+                    value=""
+                >
+
+            </div> -->
+
+
+            <div class="topbar-actions">
+            {% if user.is_authenticated %}
+                <button class="icon-button">
+                   
+                     <a href="{% url 'deconnexion' %}">  <i class="fa-solid fa-right-from-bracket"></i> </a>
+                    
+                </button>
+            
+                <div class="top-avatar">
+                {{ user.email|slice:":1"|upper }}
+                </div>
+                <h3>{{ user.email }}</h3>
+                
+            {% endif %}
+            </div>
+
+        </header>
+
+        {% block content %}
+        {% endblock %}

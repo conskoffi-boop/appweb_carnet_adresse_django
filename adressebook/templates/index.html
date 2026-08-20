@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+            <!-- HEADER -->
+
+            <div class="content-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        CARNET D'ADRESSES
+                    </span>
+
+                    <h1>Mes contacts</h1>
+
+                    <p>
+                        Gérez facilement toutes vos relations.
+                    </p>
+
+                </div>
+
+
+                <a href="{% url 'ajouter' %}" class="primary-button">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Ajouter un contact
+
+                </a>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+
+                        <span>Total contacts</span>
+
+                        <strong>{{ contacts|length }}</strong>
+
+                    </div>
+
+                </div>
+
+
+                
+
+
+            </div>
+
+
+            <!-- CONTACT SECTION -->
+
+            <div class="search-bar">
+    <form method="get" action="{% url 'index' %}">
+        <input 
+            type="text" 
+            name="recherche" 
+            placeholder="Rechercher un contact..."
+            value="{{ request.GET.recherche }}"
+        >
+        <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
+</div>
+
+            <section class="contacts-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Liste des contacts</h2>
+
+                        <span> {{ contacts|length }} contacts enregistrés</span>
+
+                    </div>
+
+
+                </div>
+
+                
+
+
+                <!-- TABLE -->
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>CONTACT</th>
+
+                                <th>TÉLÉPHONE</th>
+
+                                <th>EMAIL</th>
+
+                                
+
+                                <th>AJOUTÉ LE</th>
+
+                                <th></th>
+
+                            </tr>
+
+                        </thead>
+                         
+                       
+                        <tbody>
+                         {% for contact in contacts %}
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="contact-cell">
+
+                                        <div class="contact-avatar purple">
+                                            {{ contact.nom|slice:":1"|upper }}
+                                        </div>
+
+                                        <div>
+                                            <strong>{{ contact.nom }} {{ contact.prenom }}</strong>
+                                            <small>{{ contact.adresse }}</small>
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    {{ contact.telephone }}
+                                </td>
+
+
+                                <td>
+                                    {{ contact.email }}
+                                </td>
+
+
+
+
+                                <td>
+                                    {{ contact.date_creation }}
+                                </td>
+
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <a
+                                            href="{% url 'modifier' contact.id %}"
+                                            class="action edit"
+                                            title="Modifier"
+                                        >
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+
+                                        <a
+                                            href="{% url 'suprimer' contact.id %}"
+                                            class="action delete"
+                                            title="Supprimer"
+                                        >
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                            {% empty %}
+                            <tr> 
+
+                                <td>ajouter des contact  </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    
+                    </table>
+
+                </div>
+
+
+                <!-- PAGINATION -->
+
+                <!-- <div class="pagination">
+
+                    <span>
+                        Affichage de 1 à 4 sur 128 contacts
+                    </span>
+
+                    <div>
+
+                        <button class="page-button">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <button class="page-button active">
+                            1
+                        </button>
+
+                        <button class="page-button">
+                            2
+                        </button>
+
+                        <button class="page-button">
+                            3
+                        </button>
+
+                        <button class="page-button">
+                            ...
+                        </button>
+
+                        <button class="page-button">
+                            32
+                        </button>
+
+                        <button class="page-button">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div> -->
+
+            </section>
+
+        </div>
+
+    </main>
+{% endblock %}
+</div>
+
+</body>
+</html>
+

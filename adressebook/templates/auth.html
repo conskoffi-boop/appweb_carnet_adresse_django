@@ -1,0 +1,644 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Contactly — Votre carnet d'adresses</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="auth-page">
+
+
+    <!-- ==========================================
+         PARTIE GAUCHE — PRÉSENTATION
+    =========================================== -->
+
+    <section class="presentation">
+
+        <div class="presentation-content">
+
+            <!-- LOGO -->
+
+            <div class="auth-logo">
+
+                <div class="auth-logo-icon">
+
+                    <i class="fa-solid fa-address-book"></i>
+
+                </div>
+
+                <span>Contactly</span>
+
+            </div>
+
+
+            <!-- TEXTE -->
+
+            <div class="hero-text">
+
+                <span class="hero-badge">
+                    <i class="fa-solid fa-sparkles"></i>
+                    Votre carnet d'adresses intelligent
+                </span>
+
+
+                <h1>
+                    Tous vos contacts.
+                    <span>Au même endroit.</span>
+                </h1>
+
+
+                <p>
+                    Contactly vous permet de centraliser, organiser
+                    et gérer facilement vos contacts dans une
+                    interface simple et moderne.
+                </p>
+
+            </div>
+
+
+            <!-- AVANTAGES -->
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Ajoutez facilement
+                        </strong>
+
+                        <p>
+                            Enregistrez vos contacts en quelques secondes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Gardez vos données à jour
+                        </strong>
+
+                        <p>
+                            Modifiez les informations de vos contacts à tout moment.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Un espace organisé
+                        </strong>
+
+                        <p>
+                            Retrouvez rapidement les personnes importantes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATISTIQUE -->
+
+            <div class="mini-stats">
+
+                <div>
+
+                    <strong>Simple</strong>
+
+                    <span>à utiliser</span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>Rapide</strong>
+
+                    <span>et organisé</span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>100%</strong>
+
+                    <span>centralisé</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         PARTIE DROITE — AUTHENTIFICATION
+    =========================================== -->
+
+    <section class="auth-section">
+
+
+        <!-- CHECKBOX QUI CONTRÔLE LE SLIDE -->
+
+        <input
+            type="checkbox"
+            id="auth-toggle"
+            class="auth-toggle"
+        >
+
+
+        <div class="auth-container">
+
+
+            <!-- ==================================
+                 CONNEXION
+            =================================== -->
+
+            <div class="auth-panel login-panel">
+
+                <div class="mobile-logo">
+
+                    <div class="auth-logo-icon">
+
+                        <i class="fa-solid fa-address-book"></i>
+
+                    </div>
+
+                    <span>Contactly</span>
+
+                </div>
+
+
+                <div class="form-header">
+
+                    <span class="small-title">
+                        BON RETOUR
+                    </span>
+
+                    <h2>
+                        Content de vous revoir 
+                    </h2>
+
+                    <p>
+                        Connectez-vous pour retrouver vos contacts.
+                    </p>
+
+                </div>
+
+
+                <form method="post" action="{% url 'connexion' %}">
+
+                {% csrf_token %}
+                    <div class="input-group">
+
+                        <label for="login-email">
+                            username( votre nom )
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                name="login-username"
+                                type="texte"
+                                placeholder="Koffi"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <div class="label-row">
+
+                            <label for="login-password">
+                                Mot de passe
+                            </label>
+
+                            <a href="#">
+                                Mot de passe oublié ?
+                            </a>
+
+                        </div>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                name="login-password"
+                                type="password"
+                                placeholder="Votre mot de passe"
+
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="remember">
+
+                        <input type="checkbox">
+
+                        <span>
+                            Se souvenir de moi
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="auth-button"
+                    >
+
+                        Se connecter
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <div class="divider">
+
+                        <span>ou continuer avec</span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="google-button"
+                    >
+
+                        <i class="fa-brands fa-google"></i>
+
+                        Continuer avec Google
+
+                    </button>
+
+
+                    <p class="switch-text">
+
+                        Vous n'avez pas encore de compte ?
+
+                        <label for="auth-toggle">
+                            Créer un compte
+                        </label>
+
+                    </p>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 INSCRIPTION
+            =================================== -->
+
+            <div class="auth-panel register-panel">
+
+                <div class="mobile-logo">
+
+                    <div class="auth-logo-icon">
+
+                        <i class="fa-solid fa-address-book"></i>
+
+                    </div>
+
+                    <span>Contactly</span>
+
+                </div>
+
+
+                <div class="form-header">
+
+                    <span class="small-title">
+                        COMMENCEZ MAINTENANT
+                    </span>
+
+                    <h2>
+                        Créez votre compte 
+                    </h2>
+
+                    <p>
+                        Commencez à organiser vos contacts gratuitement.
+                    </p>
+
+                </div>
+
+
+                <form method="post" action="{% url 'inscription' %}">
+
+                {% csrf_token %}
+                    <div class="name-fields">
+
+                        <div class="input-group">
+
+                            <label>
+                                Prénom
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    placeholder="Farel"
+                                    name="prenom"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Nom
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="text"
+                                    placeholder="Koffi"
+                                    name="username"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Adresse email
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                placeholder="vous@exemple.com"
+                                name="email"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    
+                    <div class="input-group">
+
+                        <label>
+                            telephone
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="number"
+                                 placeholder="+225 07 00 00 00 00"
+                                name="telephone"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Mot de passe
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                placeholder="Créez un mot de passe"
+                                name="password"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="terms">
+
+                        <input type="checkbox">
+
+                        <span>
+                            J'accepte les
+                            <a href="#">
+                                conditions d'utilisation
+                            </a>
+                            et la
+                            <a href="#">
+                                politique de confidentialité
+                            </a>.
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="auth-button"
+                    >
+
+                        Créer mon compte
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <p class="switch-text">
+
+                        Vous avez déjà un compte ?
+
+                        <label for="auth-toggle">
+                            Se connecter
+                        </label>
+
+                    </p>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PANNEAU SLIDER
+            =================================== -->
+
+            <div class="slider-panel">
+
+                <div class="slider-content">
+
+
+                    <!-- MESSAGE CONNEXION -->
+
+                    <div class="slider-message login-message">
+
+                        <div class="slider-icon">
+
+                            <i class="fa-solid fa-address-book"></i>
+
+                        </div>
+
+
+                        <h2>
+                            Gérez vos contacts
+                            simplement.
+                        </h2>
+
+
+                        <p>
+                            Un espace unique pour garder toutes
+                            vos informations importantes à portée
+                            de main.
+                        </p>
+
+
+                        <label
+                            for="auth-toggle"
+                            class="slider-button"
+                        >
+                            Créer un compte
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </label>
+
+                    </div>
+
+
+                    <!-- MESSAGE INSCRIPTION -->
+
+                    <div class="slider-message register-message">
+
+                        <div class="slider-icon">
+
+                            <i class="fa-solid fa-hand-wave"></i>
+
+                        </div>
+
+
+                        <h2>
+                            Déjà membre de
+                            Contactly ?
+                        </h2>
+
+
+                        <p>
+                            Connectez-vous pour retrouver votre
+                            carnet d'adresses et continuer à gérer
+                            vos contacts.
+                        </p>
+
+
+                        <label
+                            for="auth-toggle"
+                            class="slider-button"
+                        >
+                            Se connecter
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+
+</html>
