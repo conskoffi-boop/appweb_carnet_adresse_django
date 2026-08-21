@@ -101,37 +101,47 @@
 
                         </div>
 
-<!-- 
+
                         <div class="form-group">
 
                             <label>Catégorie</label>
 
-                            <select>
+                            <select name="categorie_id">
+                            
+                                <option value="">
+                                    selectionner une Catégorie
+                                 
+                                </option>
+                                {% for categorie in categories %}
 
-                                <option>
-                                    Sélectionner
+                                <option value="{{ categorie.id }}">
+                                    {{ categorie.nom_categorie }}
                                 </option>
 
-                                <option>
-                                    Famille
-                                </option>
+                                {% endfor %}
 
-                                <option>
-                                    Amis
-                                </option>
-
-                                <option>
-                                    Travail
-                                </option>
-
-                                <option>
-                                    Autre
-                                </option>
+                                
 
                             </select>
 
-                        </div> -->
+                        </div>
 
+
+
+                        <div class="form-group">
+
+                            <label>Nouvelle Categorie</label>
+
+                            <input
+                                type="text"
+                                placeholder="Bureau"
+                                  name="nouvelle_categorie"
+                            >
+
+                        </div>
+
+
+                                  
 
 
 

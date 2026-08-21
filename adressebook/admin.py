@@ -1,5 +1,5 @@
 from django.contrib import admin
-from adressebook.models import Contact
+from adressebook.models import Contact,Categorie
 from gestion_user.models import Compte , User
 
 
@@ -11,7 +11,8 @@ class Contactadmin(admin.ModelAdmin):
                     'prenom',
                     'telephone',
                     'email',
-                    'date_creation',)
+                    'date_creation',
+                    'Categorie',)
 
     search_fields = ( 'nom',
                      'prenom',
@@ -24,7 +25,8 @@ class compteadmin(admin.ModelAdmin):
                  'prenom',
                  'email',
                  'telephone',
-                 'date_inscription',)
+                 'date_inscription',
+                 )
 
     search_fields=('user__username', 'user__email', 'telephone')
 
@@ -43,7 +45,7 @@ class Useradmin(admin.ModelAdmin):
     
 
 
-
+admin.site.register(Categorie)
 admin.site.register(User,Useradmin)
 admin.site.register(Contact , Contactadmin)
 admin.site.register(Compte,compteadmin)

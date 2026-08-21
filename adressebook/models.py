@@ -3,6 +3,16 @@ from gestion_user.models import User
 # Create your models here.
 
 
+###################categorie##############
+class Categorie(models.Model):
+    nom_categorie =models.CharField(180)
+    user = models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nom_categorie
+
+
+
 ######### le models contact ##############
 # Nom, prenom
 # Telephone
@@ -22,6 +32,7 @@ class Contact(models.Model):
     date_creation = models.DateField(auto_now_add=True)
     derniere_modification = models.DateField(auto_now=True)
     adresse = models.CharField(max_length=300,null=True,blank=True)
+    Categorie= models.ForeignKey( Categorie ,null=True,blank=True,on_delete=models.SET_NULL)
 
 
 

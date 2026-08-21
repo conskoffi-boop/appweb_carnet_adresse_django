@@ -73,7 +73,7 @@
         <input 
             type="text" 
             name="recherche" 
-            placeholder="Rechercher un contact..."
+            placeholder="Rechercher un contact... par nom, telephone, email, adresse, categorie, date"
             value="{{ request.GET.recherche }}"
         >
         <button type="submit">
@@ -120,7 +120,7 @@
 
                                 <th>AJOUTÉ LE</th>
 
-                                <th></th>
+                                <th>CATEGORIE</th>
 
                             </tr>
 
@@ -165,7 +165,19 @@
                                 <td>
                                     {{ contact.date_creation }}
                                 </td>
-
+                                
+                                <td>
+                                    {% if contact.Categorie %}
+                                       {{ contact.Categorie.nom_categorie }}
+                                    {% else %}
+                                      aucune categorie 
+                                    {% endif %}
+                                
+                                </td>
+                                
+                                
+                                
+                                
 
                                 <td>
 

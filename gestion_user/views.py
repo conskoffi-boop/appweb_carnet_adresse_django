@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from .models import User,Compte
 from django.contrib import messages
 from django.contrib.auth import authenticate,login, logout
+
+
+
 def inscription (request):
 
     if request.method == 'POST':
@@ -52,6 +55,7 @@ def connexion (request):
             return redirect('auth')
 
         if User is not None :
+           
             login(request,User)
 
             return redirect('index')

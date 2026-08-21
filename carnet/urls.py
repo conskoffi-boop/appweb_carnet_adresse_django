@@ -27,9 +27,10 @@ urlpatterns = [
 
     path('acceuil/',index,name='index'),
 
-    path('ajout/',ajouter,name='ajouter'),
+    path('ajout',ajouter,name='ajouter'),
 
     path('modifier/<int:id>/',modifier,name='modifier'),
+    
     path('modification/<int:id>/',conf_modif,name='conf_modif'),
 
     path('suprimer/<int:id>/',suprimer,name='suprimer'),

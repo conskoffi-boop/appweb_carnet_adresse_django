@@ -23,8 +23,14 @@
 
 <body>
 
+
+
+
 <div class="auth-page">
 
+
+
+    
 
     <!-- ==========================================
          PARTIE GAUCHE — PRÉSENTATION
@@ -206,6 +212,32 @@
         <div class="auth-container">
 
 
+                    {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    <div class="message-icon">
+                        {% if message.tags == 'success' %}
+                            <i class="fa-solid fa-check"></i>
+                        {% elif message.tags == 'error' %}
+                            <i class="fa-solid fa-xmark"></i>
+                        {% elif message.tags == 'warning' %}
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        {% else %}
+                            <i class="fa-solid fa-info"></i>
+                        {% endif %}
+                    </div>
+
+                    <div class="message-text">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+
             <!-- ==================================
                  CONNEXION
             =================================== -->
@@ -226,6 +258,7 @@
 
 
                 <div class="form-header">
+
 
                     <span class="small-title">
                         BON RETOUR
@@ -352,7 +385,8 @@
 
                 </form>
 
-            </div>
+            </div> 
+            
 
 
 
