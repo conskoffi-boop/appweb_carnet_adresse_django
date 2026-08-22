@@ -29,11 +29,12 @@ SECRET_KEY = config('SECRET_KEY', default='dev-key-change-in-production')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+# ✅ FIX 1: ALLOWED_HOSTS - DOIT INCLURE VOTRE DOMAINE RENDER
+ALLOWED_HOSTS = ['django-contactly.onrender.com', '*.render.com', 'localhost', '127.0.0.1']
 
 # CSRF and Security settings pour Render
 if not DEBUG:
-    CSRF_TRUSTED_ORIGINS = ['https://*.render.com']
+    CSRF_TRUSTED_ORIGINS = ['https://*.render.com', 'https://django-contactly.onrender.com']
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -132,7 +133,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# WhiteNoise compression
+# ✅ FIX 2: AJOUTER STATICFILES_DIRS pour vos fichiers locaux
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# WhiteNoise compression et caching
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# WhiteNoise caching pour les fichiers statiques
+WHITENOISE_AUTOREFRESH = True if DEBUG else False
+WHITENOISE_USE_FINDERS = True
 
 AUTH_USER_MODEL = 'gestion_user.User'
